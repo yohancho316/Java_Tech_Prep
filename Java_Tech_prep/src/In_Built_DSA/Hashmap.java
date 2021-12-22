@@ -5,8 +5,40 @@ import java.util.HashMap;
 public class Hashmap {
     public static void main(String[] args) {
 
+        // Create Hash Map Collection Object
         HashMap<String,Integer> hm1 = new HashMap<String,Integer>();
-        System.out.println("Hello");
+
+        // Insert KVP into Hash Map
+        hm1.put("Hello", 123);
+        hm1.put("Hello", 234);
+
+        // Access an Item
+        System.out.println(hm1.get("Hello"));
+
+        // Remove an Item
+        hm1.remove("Hello");
+
+        // Clear Hash Map Collection
+        hm1.clear();
+
+        // Get Size of the Hash map
+        System.out.println(hm1.size());
+
+        hm1.put("A", 10);
+        hm1.put("B", 20);
+        hm1.put("C", 30);
+        hm1.put("D", 40);
+        hm1.put("E", 50);
+
+        // Iterate through the Hash Map Key Set
+        for(String i : hm1.keySet()) {
+            System.out.println("Key: " + i + "\t Value: " + hm1.get(i));
+        }
+
+        // Iterate through the Hash Map Values
+        for(int i : hm1.values()) {
+            System.out.println("Value: " + i);
+        }
 
     }
 }
@@ -46,5 +78,7 @@ public class Hashmap {
     When the number of entries in the hash table exceeds the product of the load factor and the current capacity, the hash table
     is rehashed so that the hash table has approximately twice the number of buckets.
 
-6.
+6. What are Acceptable Data Types for Keys?
+   Keys MUST be objects and if you wish to use primitive data types as keys you must use an equivalent wrapper class.
+
 */
