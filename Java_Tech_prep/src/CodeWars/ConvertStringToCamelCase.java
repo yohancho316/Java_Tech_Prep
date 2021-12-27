@@ -1,8 +1,8 @@
 /*
-URL:
+URL: https://www.codewars.com/kata/517abf86da9663f1d2000003
 Difficulty: 6-Kyu
-Time Complexity:
-Space Complexity:
+Time Complexity: O(N)
+Space Complexity: O(1)
  */
 
 package CodeWars;
