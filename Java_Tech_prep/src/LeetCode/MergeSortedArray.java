@@ -1,32 +1,67 @@
+/*
+URL: https://leetcode.com/problems/merge-two-sorted-lists/
+Difficulty: Easy
+Time Complexity: O(M + N) where M = total elements in list1 && N = total elements in list2
+Space Complexity: O(1)
+ */
+
 package LeetCode;
 import java.util.*;
 
+
+
 public class MergeSortedArray {
 
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+    static class ListNode {
 
-        if(nums1.length == 0) {
-            nums1 = nums2.clone();
-            return;
+        // Member Attributes
+        public int val;
+        public ListNode next;
+
+        // Default Constructor
+        public ListNode() {
+            this.val = 0;
+            this.next = null;
         }
 
-        int x = 0;
-        for(int i = 0; i < nums2.length - 1; i++) {
-            while(nums2[i] >= nums1[x]) {
-                x += 1;
-            }
-            for(int j = nums1.length - 1; j > x; j--) {
-               nums1[j] = nums1[j - 1];
-            }
-            nums1[x] = nums2[i];
+        // Overloaded Constructor
+        public ListNode(int val) {}
+
+        public ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
         }
-        nums1[nums1.length - 1] = nums2[nums2.length - 1];
+    }
+
+    public static ListNode merge(ListNode list1, ListNode list2) {
+
+        if(list1 == null) return list2;
+        if(list2 == null) return list1;
+
+        ListNode head = new ListNode();
+        ListNode tail = head;
+
+        while(list1 != null && list2 != null) {
+            if(list1.val < list2.val) {
+                tail.next = list1;
+                list1 = list1.next;
+            } else {
+                tail.next = list2;
+                list2 = list2.next;
+            }
+            tail = tail.next;
+        }
+
+        if(list1 == null) {
+            tail.next = list2;
+        } else {
+            tail.next = list1;
+        }
+
+        return head.next;
     }
 
     public static void main(String[] args) {
-        int[] arr1 = {0,10,35,40,0,0,0};
-        int[] arr2 = {5,7,10};
-        merge(arr1, 3, arr2, arr2.length);
-        System.out.println(Arrays.toString(arr1));
+
     }
 }
