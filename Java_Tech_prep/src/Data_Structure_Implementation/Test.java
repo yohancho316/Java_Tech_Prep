@@ -1,4 +1,4 @@
-package Data_Structure_Implementation.Stack;
+package Data_Structure_Implementation;
 
 public class Test {
     public static void main(String[] args) {

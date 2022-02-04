@@ -1,4 +1,4 @@
-package Data_Structure_Implementation.Stack;
+package Data_Structure_Implementation;
 import sun.invoke.empty.Empty;
 
 import java.util.EmptyStackException;
