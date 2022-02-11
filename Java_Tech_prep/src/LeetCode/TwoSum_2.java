@@ -23,6 +23,7 @@ public class TwoSum_2 {
             my_map.put(nums[i], i);
         }
 
+        //
         for(int j = 0; j < nums.length; j++) {
             int diff = target - nums[j];
             if((my_map.containsKey(diff)) && (my_map.get(diff) != j)) {
