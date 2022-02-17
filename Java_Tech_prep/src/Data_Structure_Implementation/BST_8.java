@@ -1,13 +1,14 @@
 package Data_Structure_Implementation;
-import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
-public class BST_7 {
+public class BST_8 {
 
     // Tree Node Class
     public static class TreeNode {
 
-        // Tree Node Attributes
+        // Member Attributes
         public int data;
         public TreeNode left;
         public TreeNode right;
@@ -18,16 +19,21 @@ public class BST_7 {
         // Overloaded Constructor
         public TreeNode(int _data) {
             this.data = _data;
-            this.left = null;
-            this.right = null;
+        }
+
+        // Overloaded Constructor
+        public TreeNode(int _data, TreeNode _left, TreeNode _right) {
+            this.data = _data;
+            this.left = _left;
+            this.right = _right;
         }
     }
 
-    // BST Member Attributes
+    // Member Attributes
     public TreeNode root;
 
     // Default Constructor
-    public BST_7() {
+    public BST_8() {
         this.root = null;
     }
 
@@ -38,6 +44,7 @@ public class BST_7 {
 
     // Overloaded Recursive Insert Method
     public TreeNode insert(TreeNode root, int _data) {
+
         // Base Condition
         if(root == null) {
             root = new TreeNode(_data);
@@ -50,8 +57,9 @@ public class BST_7 {
         return root;
     }
 
-    // Pre-Order Recursive Traversal of BST (Depth-First)
-    public void preOrder(TreeNode root) {
+    // Recursive Pre Order Traversal (Depth-First)
+    public void preOrder_recursive(TreeNode root) {
+
         // Base Condition
         if(root == null) {
             System.out.println("NULL");
@@ -59,42 +67,62 @@ public class BST_7 {
         }
 
         System.out.println(root.data);
-        preOrder(root.left);
-        preOrder(root.right);
+        preOrder_recursive(root.left);
+        preOrder_recursive(root.right);
     }
 
-    // Post-Order Recursive Traversal of BST (Depth-First)
-    public void postOrder(TreeNode root) {
+    // Recursive Post Order Traversal (Depth-First)
+    public void postOrder_recursive(TreeNode root) {
+
         // Base Condition
         if(root == null) {
             System.out.println("NULL");
             return;
         }
 
-        postOrder(root.left);
-        postOrder(root.right);
+        postOrder_recursive(root.left);
+        postOrder_recursive(root.right);
         System.out.println(root.data);
     }
 
-    // In-Order Recursive Traversal of BST (Depth-First)
-    public void inOrder(TreeNode root) {
+    // Recursive In Order Traversal (Depth-First)
+    public void inOrder_recursive(TreeNode root) {
+
         // Base Condition
         if(root == null) {
             System.out.println("NULL");
             return;
         }
 
-        inOrder(root.left);
+        inOrder_recursive(root.left);
         System.out.println(root.data);
-        inOrder(root.right);
+        inOrder_recursive(root.right);
     }
 
-    // Level-Order Iterative Traversal of BST (Breadth-First)
-    public void levelOrder(TreeNode root) {
+    // Iterative In Order Traversal (Depth-First)
+    public void inOrder_iterative(TreeNode root) {
 
         if(root == null) {
             return;
         }
+
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode temp = root;
+
+        while(!stack.isEmpty() || temp != null) {
+            if(temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                temp = stack.pop();
+                System.out.println(temp.data);
+                temp = temp.right;
+            }
+        }
+    }
+
+    // Iterative Level Order Traversal (Breadth-First)
+    public void levelOrder_iterative(TreeNode root) {
 
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
@@ -111,18 +139,7 @@ public class BST_7 {
                 queue.add(temp.right);
             }
         }
+
     }
 
-
-    public static void main(String[] args) {
-        BST_7 tree = new BST_7();
-        tree.insert(5);
-        tree.insert(3);
-        tree.insert(1);
-        tree.insert(4);
-        tree.insert(10);
-        tree.insert(8);
-
-        tree.levelOrder(tree.root);
-    }
 }
