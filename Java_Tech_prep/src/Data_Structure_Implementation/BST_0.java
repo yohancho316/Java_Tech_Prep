@@ -1,7 +1,7 @@
 package Data_Structure_Implementation;
 
 
-public class BinarySearchTree {
+public class BST_0 {
 
     /*
         - In a BST, all the nodes in the left subtree have values that are less than the value of the root node
@@ -81,7 +81,7 @@ public class BinarySearchTree {
     public Node root;
 
     // Default Constructor
-    public BinarySearchTree() {
+    public BST_0() {
         this.root = null;
     }
 
