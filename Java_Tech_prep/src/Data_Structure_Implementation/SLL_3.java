@@ -76,21 +76,22 @@ public class SLL_3 {
     }
 
     public void deleteHead() {
-        if(this.head == null && this.tail == null) {
+
+        if(this.isEmpty()) {
             return;
-        } else if(this.head == this.tail) {
-            this.head = null;
-            this.tail = null;
         } else {
-            this.head = this.head.next;
+            this.head = head.next;
+            if(head == null) {
+                this.tail = null;
+            }
         }
-        this.size -= 1;
+        --this.size;
     }
 
     public void deleteTail() {
         if(this.isEmpty()) {
             return;
-        } else if(this.head == this.tail) {
+        } else if(this.size == 1) {
             this.head = null;
             this.tail = null;
         } else {
