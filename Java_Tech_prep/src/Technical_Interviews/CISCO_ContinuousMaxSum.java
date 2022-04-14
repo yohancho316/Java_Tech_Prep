@@ -1,10 +1,6 @@
+package Technical_Interviews;// DATE: 3/24/2022
 
-
-package Interview.CISCO_TECHNICAL_ASSESSMENT;
-
-// DATE: 3/24/2022
-
-public class ContinuousMaxSum {
+public class CISCO_ContinuousMaxSum {
 
 
     public static int largestSumSequence(int[] inputArr) {

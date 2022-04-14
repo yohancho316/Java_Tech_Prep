@@ -1,8 +1,6 @@
-package Interview.CISCO_TECHNICAL_ASSESSMENT;
+package Technical_Interviews;// DATE: 3/24/2022
 
-// DATE: 3/24/2022
-
-public class MaxDiff {
+public class CISCO_MaxDiff {
 
     public static int maximumDifference(int[] inputArr) {
 

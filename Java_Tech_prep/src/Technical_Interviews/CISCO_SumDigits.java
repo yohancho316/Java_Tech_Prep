@@ -1,9 +1,10 @@
-package Interview.CISCO_TECHNICAL_ASSESSMENT;
+package Technical_Interviews;
+
 import java.util.Arrays;
 
 // DATE: 3/24/2022
 
-public class SumDigits {
+public class CISCO_SumDigits {
 
     public static int sumDigits(int numX, int numY) {
 

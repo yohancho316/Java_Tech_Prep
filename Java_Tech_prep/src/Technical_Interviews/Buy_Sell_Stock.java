@@ -1,4 +1,4 @@
-package Interview.CISCO_TECHNICAL_ASSESSMENT;
+package Technical_Interviews;
 
 public class Buy_Sell_Stock {
 
