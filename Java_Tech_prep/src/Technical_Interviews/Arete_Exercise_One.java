@@ -1,5 +1,4 @@
 package Technical_Interviews;
-import java.util.Arrays;
 
 public class Arete_Exercise_One {
 
