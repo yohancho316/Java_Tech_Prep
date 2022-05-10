@@ -23,11 +23,11 @@ public class Arete_Exercise_Four {
         if(list == null) throw new NullPointerException("ArrayList cannot be Null");
 
 
-        // Step 2: Check if Char Array Argument is Empty. Throw the Illegal Argument Runtime Exception if True.
+        // Step 3: Check if Char Array Argument is Empty. Throw the Illegal Argument Runtime Exception if True.
         if(items.length == 0) throw new IllegalArgumentException("Array cannot be Empty");
 
 
-        // Step 3: Check if Array items Length == 1. Insert Single Element to ArrayList & Return.
+        // Step 4: Check if Array items Length == 1. Insert Single Element to ArrayList & Return.
         if(items.length == 1)
         {
             list.add(new String(items));
@@ -35,15 +35,15 @@ public class Arete_Exercise_Four {
         }
 
 
-        // Step 4: Check if Left is Out of Bounds. Throw the ArrayIndexOutOfBounds Runtime Exception if True.
+        // Step 5: Check if Left is Out of Bounds. Throw the ArrayIndexOutOfBounds Runtime Exception if True.
         if(left < 0 || left >= items.length) throw new ArrayIndexOutOfBoundsException("Left is out of Bounds");
 
 
-        // Step 5: Check if Right is out of Bounds. Throw the ArrayIndexOutOfBounds Runtime Exception if True.
+        // Step 6: Check if Right is out of Bounds. Throw the ArrayIndexOutOfBounds Runtime Exception if True.
         if(right < 0 || right >= items.length) throw new ArrayIndexOutOfBoundsException("Right is out of Bounds");
 
 
-        // Step 5: If left == right, add the String Concatenation of Elements in item to ArrayList
+        // Step : If left == right, add the String Concatenation of Elements in item to ArrayList
         if(left == right)
         {
             list.add(new String(items));
@@ -55,8 +55,6 @@ public class Arete_Exercise_Four {
             {
                 items = swap(items, left, i);
                 findAllPermutations(items, left + 1, right, list);
-
-                // Perform Back Tracking to Retain Previous Position
                 items = swap(items, left, i);
             }
         }
@@ -73,6 +71,6 @@ public class Arete_Exercise_Four {
         findAllPermutations(items, 0, right, list);
 
 
-        System.out.println("\n\n\nFinal List: " + list.toString());
+        System.out.println("\n\n\nTotal Possible Permutations: " + list.toString());
     }
 }

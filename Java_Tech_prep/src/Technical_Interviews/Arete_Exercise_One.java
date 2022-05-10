@@ -42,7 +42,7 @@ public class Arete_Exercise_One {
     public static void main(String[] args) {
         String str_1 = "an3d; and,      and and? 43 451251251 10";
 
-        longestWord(str_1);
+        System.out.println(longestWord(str_1));
 
     }
 }
