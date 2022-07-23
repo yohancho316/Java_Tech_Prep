@@ -37,7 +37,7 @@ public class ValidAnagram_2 {
 
     public static void main(String[] args) {
         String s = "abcc";
-        String t = "cabe";
+        String t = "ccba";
         System.out.println(isAnagram(s,t));
     }
 }
