@@ -96,6 +96,37 @@ public class BST_26 {
         }
     }
 
+    // InOrder Recursive Traversal
+    public void InOrder_Recursive(Node root) {
+
+        // Base Condition
+        if(root == null) return;
+
+        InOrder_Recursive(root.getLeft());
+        System.out.println(root.getVal());
+        InOrder_Recursive(root.getRight());
+    }
+
+    // InOrder Iterative Traversal
+    public void InOrder_Iterative(Node root) {
+
+        if(root == null) return;
+
+        Stack<Node> stack = new Stack<Node>();
+        Node current = root;
+
+        while(current != null || !stack.isEmpty()) {
+            if(current != null) {
+                stack.push(current);
+                current = current.getLeft();
+            } else {
+                current = stack.pop();
+                System.out.println(current.getVal());
+                current = current.getRight();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         BST_26 i_bst = new BST_26();
         BST_26 r_bst = new BST_26();
@@ -114,6 +145,16 @@ public class BST_26 {
 
         System.out.println("Printing r_bst w/ Recursive PreOrder Traversal");
         r_bst.PreOrder_Recursive(r_bst.root);
+        System.out.println();
+
+        System.out.println("Printing i_bst w/ Iterative InOrder Traversal:");
+        i_bst.InOrder_Iterative(i_bst.root);
+        System.out.println();
+
+        System.out.println("Printing r_bst w/ Recursive InOrder Traversal:");
+        r_bst.InOrder_Recursive(r_bst.root);
+        System.out.println();
+
     }
 
 }
