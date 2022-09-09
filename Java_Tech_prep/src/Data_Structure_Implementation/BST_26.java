@@ -1,5 +1,7 @@
 package Data_Structure_Implementation;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BST_26 {
@@ -169,6 +171,28 @@ public class BST_26 {
 
     }
 
+    // LevelOrder Iterative Traversal
+    public void LevelOrder_Iterative(Node root) {
+        if(root == null) return;
+
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+
+            Node current = queue.remove();
+            System.out.println(current.getVal());
+
+            if(current.getLeft() != null) {
+                queue.add(current.getLeft());
+            }
+
+            if(current.getRight() != null) {
+                queue.add(current.getRight());
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         BST_26 i_bst = new BST_26();
@@ -205,6 +229,11 @@ public class BST_26 {
         System.out.println("Printing r_bst w/ Iterative PostOrder Traversal:");
         r_bst.PostOrder_Iterative(r_bst.root);
         System.out.println();
+
+        System.out.println("Printing i_bst w/ Iterative LevelOrder Traversal:");
+        i_bst.LevelOrder_Iterative(i_bst.root);
+        System.out.println();
+
 
 
     }
