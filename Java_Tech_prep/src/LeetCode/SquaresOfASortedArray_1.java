@@ -26,7 +26,7 @@ public class SquaresOfASortedArray_1 {
 
     public static void main(String[] args) {
         int[] nums = {-10, -5, -3, 1, 2, 6};
-        int[] nums2 = {-5,0};
+
         System.out.println("Pre Squared: " + Arrays.toString(nums));
         nums = sortedSquares(nums);
         System.out.println("Post Squared: " + Arrays.toString(nums));
