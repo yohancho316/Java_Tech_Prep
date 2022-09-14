@@ -193,10 +193,70 @@ public class BST_26 {
         }
     }
 
+    // Recursive Delete
+    public Node delete_Recursive(Node root, int target) {
+
+        // Choose Which Delete Operation to Perform
+        boolean delete_MIN = true;
+        boolean delete_MAX = false;
+
+        // Base Case & Traverse to Target Node
+        if(root == null) return null;
+        else if(target < root.getVal()) root.setLeft(delete_Recursive(root.getLeft(), target));
+        else if(target > root.getVal()) root.setRight(delete_Recursive(root.getRight(), target));
+        else {
+
+            // Case # 1: Target Node has NO Child Nodes
+            if((root.getLeft() == null) && (root.getRight() == null)) {
+                return null;
+            }
+
+            // Case # 2: Target Node has ONE Child Node
+            else if(root.getRight() == null) {
+                return root.getLeft();
+            } else if(root.getLeft() == null) {
+                return root.getRight();
+            }
+
+            // Case # 3: Target Node has TWO Child Nodes
+            else {
+
+                if(delete_MIN) {
+                    Node temp = findMIN(root.getRight());
+                    root.setVal(temp.getVal());
+                    root.setRight(delete_Recursive(root.getRight(), temp.getVal()));
+                }
+
+                if(delete_MAX) {
+                    Node temp = findMAX(root.getLeft());
+                    root.setVal(temp.getVal());
+                    root.setLeft(delete_Recursive(root.getLeft(), temp.getVal()));
+                }
+            }
+        }
+        return root;
+    }
+
+    // Find Min Node
+    public Node findMIN(Node root) {
+        while(root.getLeft() != null) {
+            root = root.getLeft();
+        }
+        return root;
+    }
+
+    // Find Max Node
+    public Node findMAX(Node root) {
+        while(root.getRight() != null) {
+            root = root.getRight();
+        }
+        return root;
+    }
 
     public static void main(String[] args) {
         BST_26 i_bst = new BST_26();
         BST_26 r_bst = new BST_26();
+        BST_26 d_bst = new BST_26();
 
         i_bst.iterative_insert(50);
         i_bst.iterative_insert(30);
@@ -209,6 +269,15 @@ public class BST_26 {
         r_bst.recursive_insert(100);
         r_bst.recursive_insert(50);
         r_bst.recursive_insert(200);
+
+        d_bst.iterative_insert(100);
+        d_bst.iterative_insert(50);
+        d_bst.iterative_insert(25);
+        d_bst.iterative_insert(75);
+        d_bst.iterative_insert(150);
+        d_bst.iterative_insert(125);
+        d_bst.iterative_insert(175);
+        d_bst.iterative_insert(160);
 
         System.out.println("Printing r_bst w/ Recursive PreOrder Traversal");
         r_bst.PreOrder_Recursive(r_bst.root);
@@ -234,7 +303,13 @@ public class BST_26 {
         i_bst.LevelOrder_Iterative(i_bst.root);
         System.out.println();
 
+        System.out.println("Printing d_bst w/ Iterative LevelOrder Traversal:");
+        d_bst.PreOrder_Recursive(d_bst.root);
+        System.out.println();
 
+        System.out.println("Delete d_bst Recursive Deletion:");
+        d_bst.root = d_bst.delete_Recursive(d_bst.root, 150);
+        d_bst.LevelOrder_Iterative(d_bst.root);
 
     }
 
