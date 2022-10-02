@@ -13,7 +13,7 @@ public class BST_27 {
     }
 
     // Recursive Insertion
-    public void recursive_Insertion(int val) {
+    public void Recursive_Insertion(int val) {
         this.root = recursive_Insertion_Logic(this.root, val);
     }
 
@@ -35,7 +35,7 @@ public class BST_27 {
     }
 
     // Iterative Insertion
-    public void iterative_Insertion(int val) {
+    public void Iterative_Insertion(int val) {
 
         if(this.root == null) {
             this.root = new Node(val);
@@ -59,19 +59,19 @@ public class BST_27 {
         }
     }
 
-    // DFS PreOrder Tree Recursive Traversal
-    public void preOrder_Recursive(Node root) {
+    // DFS PreOrder Binary Tree Recursive Traversal
+    public void PreOrder_Recursive(Node root) {
 
         // Base Case
         if(root == null) return;
 
         System.out.println(root.getVal());
-        preOrder_Recursive(root.getLeft());
-        preOrder_Recursive(root.getRight());
+        PreOrder_Recursive(root.getLeft());
+        PreOrder_Recursive(root.getRight());
     }
 
-    // DFS PreOrder Tree Iterative Traversal
-    public void preOrder_Iterative(Node root) {
+    // DFS PreOrder Binary Tree Iterative Traversal
+    public void PreOrder_Iterative(Node root) {
 
         // Base Case
         if(root == null) return;
@@ -92,6 +92,79 @@ public class BST_27 {
             }
         }
     }
+
+    // DFS InOrder Binary Tree Recursive Traversal
+    public void InOrder_Recursive(Node root) {
+
+        // Base Case
+        if(root == null) return;
+
+        InOrder_Recursive(root.getLeft());
+        System.out.println(root.getVal());
+        InOrder_Recursive(root.getRight());
+    }
+
+    // DFS InOrder Binary Tree
+    public void InOrder_Iterative(Node root) {
+
+        // Base Case
+        if(root == null) return;
+
+        Stack<Node> stack = new Stack<Node>();
+        Node current = root;
+
+        while ((current != null) || (!stack.isEmpty())) {
+            if(current != null) {
+                stack.push(current);
+                current = current.getLeft();
+            } else {
+                Node temp = stack.pop();
+                System.out.println(temp.getVal());
+                current = temp.getRight();
+            }
+        }
+    }
+
+    // DFS PostOrder Binary Tree Recursive Traversal
+    public void PostOrder_Recursive(Node root) {
+
+        // Base Case
+        if(root == null) return;
+
+        PostOrder_Recursive(root.getLeft());
+        PostOrder_Recursive(root.getRight());
+        System.out.println(root.getVal());
+    }
+
+    // DFS PostOrder Binary Tree Iterative Traversal
+    public void PostOrder_Iterative(Node root) {
+
+        // Base Case
+        if(root == null) return;
+
+        Stack<Node> stack = new Stack<Node>();
+        Node current = root;
+
+        while((current != null) || (!stack.isEmpty())) {
+            if(current != null) {
+                stack.push(current);
+                current = current.getLeft();
+            } else {
+                Node temp = stack.peek().getRight();
+                if(temp == null) {
+                    temp = stack.pop();
+                    System.out.println(temp.getVal());
+                    while((!stack.isEmpty()) && (stack.peek().getRight() == temp)) {
+                        current = stack.pop();
+                        System.out.println(current);
+                    }
+                } else {
+                    current = temp;
+                }
+            }
+        }
+    }
+
 
     // Main Method
     public static void main(String[] args) {
