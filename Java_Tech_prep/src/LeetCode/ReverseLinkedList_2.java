@@ -10,7 +10,7 @@ package LeetCode;
 
 public class ReverseLinkedList_2 {
 
-    static class ListNode {
+    public static class ListNode {
 
         // Member Attributes
         public int val;
