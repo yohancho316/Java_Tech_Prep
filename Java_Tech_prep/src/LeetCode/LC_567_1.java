@@ -63,7 +63,7 @@ public class LC_567_1 {
     }
 
     public static void main(String[] args) {
-        String s1 = "adc";
+        String s1 = "abacaba";
         String s2 = "dcda";
         System.out.println("A permutation of s1 exists in s2: " + checkInclusion(s1, s2));
     }
