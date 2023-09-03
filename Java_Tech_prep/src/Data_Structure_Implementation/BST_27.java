@@ -1,5 +1,7 @@
 package Data_Structure_Implementation;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BST_27 {
@@ -161,6 +163,27 @@ public class BST_27 {
                 } else {
                     current = temp;
                 }
+            }
+        }
+    }
+
+    // BFS Level Order Binary Tree Traversal
+    public void LevelOrder(Node root) {
+        if(root == null) return;
+
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.offer(root);
+
+        while(!queue.isEmpty()) {
+            Node curr = queue.poll();
+            System.out.println(curr.getVal());
+
+            if(curr.getLeft() != null) {
+                queue.offer(curr.getLeft());
+            }
+
+            if(curr.getRight() != null) {
+                queue.offer(curr.getRight());
             }
         }
     }
